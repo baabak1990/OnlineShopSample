@@ -1,0 +1,49 @@
+﻿@model OzhanCoreLayer.ViewModels.AccountVM.UserPanelViewModels.EditUserPanelViewModel.EditUserPanelViewModel
+@{
+    ViewData["Title"] = "ویرایش حساب کاربری";
+    Layout = "~/Areas/Accounts/Views/Shared/_UserPanelLayout.cshtml";
+}
+
+<div class="row">
+    <h1 class="text text-info mr-2">@ViewData["Title"]</h1>
+
+    <div class="container">
+        <div class="profile-stats">
+            <div class="profile-address">
+                <div class="middle-container">
+                    <form asp-area="Accounts" asp-controller="UserPanel" asp-action="EditUserPanel" asp-antiforgery="true" enctype="multipart/form-data" class="form-checkout">
+                        <div class="form-checkout-row">
+                            <input type="hidden" asp-for="ImageName"/>
+                            <label asp-for="UserName">:نام کاربری</label>
+                            <h4 class="text text-info text-lg">@Model.UserName</h4>
+                            <hr/>
+                            <label asp-for="Name">نام <abbr class="required" title="ضروری" style="color: red;">*</abbr></label>
+                            <input type="text" asp-for="Name" class="input-namefirst-checkout form-control">
+
+                            <label asp-for="Family">نام خانوادگی <abbr class="required" title="ضروری" style="color: red;">*</abbr></label>
+                            <input type="text" asp-for="Family" class="input-namelast-checkout form-control">
+
+                            <label asp-for="Email">ایمیل <abbr class="required" title="ضروری" style="color: red;">*</abbr></label>
+                            <input type="text" asp-for="Email" class="input-email-checkout form-control">
+                        </div>
+                        <hr />
+                        <p class="text-warning">آواتار</p>
+                        <label class="text-danger">لطفا فقط تصویر انتخاب کنید</label>
+                        <br/>
+                        <input asp-for="AvatarName" type="file" />
+                        <br />
+                        <img src="~/UserPanel/assets/Pic/@Model.ImageName" style="max-width: 150px" />
+                        <br />
+                        <hr />
+                        <div class="form-checkout-row">
+                            <div class="AR-CR">
+                                <button class="btn-registrar"> ثبت تغییرات </button>
+                                <a href="#" class="cancel-edit-address" data-dismiss="modal" aria-label="Close">بازگشت</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

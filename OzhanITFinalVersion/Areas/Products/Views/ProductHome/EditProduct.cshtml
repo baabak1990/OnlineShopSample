@@ -1,0 +1,474 @@
+﻿@using OzhanCoreLayer.ViewModels.BaseProducts
+@using OzhanDomainLayer.Entities.Products.Common
+@model ProductCreatOrEditViewModel
+@{
+    ViewData["Title"] = "ویرایش محصول";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminPabnelLayout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <form method="post" asp-area="Products" asp-controller="ProductHome" asp-action="AddProduct" enctype="multipart/form-data">
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">ویژگی ها اصلی</h3>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="box-body">
+                                <!-- Color Picker -->
+                                <input type="hidden" asp-for=ImagheName/>
+                                <input type="hidden" asp-for=Video/>
+                                <div class="form-group">
+                                    <label>نام محصول</label>
+                                    <input type="text" asp-for="Title" class="form-control my-colorpicker1 colorpicker-element">
+                                </div>
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                                <div class="form-group">
+                                    <label>نام گروه اصلی</label>
+                                    <select asp-for="Group" asp-items="@(ViewData["Group"] as SelectList)" class="form-control my-colorpicker1 colorpicker-element"></select>
+                                </div>
+                                <span asp-validation-for="Group" class="text-danger"></span>
+                                <div class="form-group">
+                                    <label>نام زیر گروه </label>
+                                    <select asp-for="SubGroup" asp-items="@(ViewData["SubGroup"] as SelectList)" class="form-control my-colorpicker1 colorpicker-element"></select>
+                                </div>
+                                <span asp-validation-for="SubGroup" class="text-danger"></span>
+                                <hr />
+                                <br />
+                                <div class="box-header">
+                                    <h3 class="box-title text-info">توضیحات محصول</h3>
+                                    <hr />
+                                    <div class="form-group">
+                                        <label>توضیحات کوتاه : </label>
+                                        <textarea asp-for="ShortDescription" class="form-control" rows="3" placeholder="متن"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>توضیحات فنی : </label>
+                                        <textarea asp-for="LongDescription" class="form-control" rows="3" placeholder="متن"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>کلمات کلیدی : </label>
+                                        <br />
+                                        <label class="text-danger">لطفا کلمات را با - از هم جدا کنید </label>
+                                        <textarea asp-for="Tags" class="form-control" rows="3" placeholder="متن"></textarea>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="box-header">
+                                    <h3 class="box-title text-info">قیمت و تخفیفات</h3>
+                                    <div class="form-group">
+                                        <label>قیمت  : </label>
+                                        <br />
+                                        <label class="text-danger"> لطفا فقط از اعداد استفاده کنید </label>
+                                        <input type="number" asp-for="Price" class="form-control" rows="3" placeholder="قیمت" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>تخفیف  : </label>
+                                        <br />
+                                        <label class="text-danger"> لطفا فقط از اعداد استفاده کنید </label>
+                                        <input type="number" asp-for="OffSale" class="form-control" rows="3" placeholder="تخفیف" />
+                                    </div>
+                                </div>
+                                <div class="box-header">
+                                    <h3 class="box-title text-info">وضعیت موجودی</h3>
+                                    <br />
+                                    <hr>
+                                    <div class="form-group">
+                                        <label>تعداد  : </label>
+                                        <br />
+                                        <label class="text-danger"> لطفا فقط از اعداد استفاده کنید </label>
+                                        <input type="number" asp-for="Count" class="form-control" rows="3" placeholder="نعداد" />
+                                    </div>
+                                    <label class="text-danger"> موجود است ؟</label>
+                                    <br />
+                                    <select asp-for="IsAvailable" asp-items="@Html.GetEnumSelectList<Status>()"></select>
+                                </div>
+                                <div class="box-header">
+                                    <h3 class="box-title text-info">ویژگی ها :</h3>
+                                    <br />
+                                    <hr>
+                                    <div class="form-group">
+                                        <label>سازنده  : </label>
+                                        <input type="text" asp-for="Creator" class="form-control" rows="3" placeholder="نام سازنده" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>چیپ ست  : </label>
+                                        <input type="text" asp-for="Chipset" class="form-control" rows="3" placeholder="چیپ" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>نوع پردازنده  : </label>
+                                        <input type="text" asp-for="CpuType" class="form-control" rows="3" placeholder="نوع پردازنده" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-danger"> فرمت ساخت </label>
+                                        <br />
+                                        <select asp-for="Format" asp-items="@Html.GetEnumSelectList<MotherboardFormat>()"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-danger"> تعداد سوکت پردازنده </label>
+                                        <br />
+                                        <select asp-for="CpuZipCount" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-danger"> نسل پردازنده </label>
+                                        <br />
+                                        <select asp-for="CpuGenerations" asp-items="@Html.GetEnumSelectList<CpuGeneration>()"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>توضیحات پردازنده  : </label>
+                                        <input type="text" asp-for="CpuDescription" class="form-control" rows="3" placeholder="توضیحات پردازنده" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-danger"> نسل حافظه </label>
+                                        <br />
+                                        <select asp-for="RamGeneration" asp-items="@Html.GetEnumSelectList<RamGen>()"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>حداکثر ظرفیت حافظه : </label>
+                                        <input type="text" asp-for="RamCapacities" class="form-control" rows="3" placeholder="حداکثر ظرفیت حافظه" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-danger"> پشتیبانی از حافظه دو کاناله :</label>
+                                        <br />
+                                        <select asp-for="DualChanel" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>توضیحات حافظه : </label>
+                                        <input type="text" asp-for="RamDescription" class="form-control" rows="3" placeholder="حداکثر ظرفیت حافظه " />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-danger"> تعداد پورت رم</label>
+                                        <br />
+                                        <select asp-for="DimmRam" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                                    </div>
+                                    <hr style=" border-top: 1px solid green;" />
+                                    <div class="form-group">
+                                        <label class="text-danger"> تعداد پورت HDMI :</label>
+                                        <br />
+                                        <select asp-for="HdimPorts" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>توضیحات HDMI : </label>
+                                    <input type="text" asp-for="HdmiDescription" class="form-control" rows="3" placeholder="توضیحات HDMI " />
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger"> تعداد پورت DVI :</label>
+                                    <br />
+                                    <select asp-for="DVIPorts" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>توضیحات DVI : </label>
+                                    <input type="text" asp-for="DviDescription" class="form-control" rows="3" placeholder="توضیحات DVI " />
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger"> تعداد پورت RGB :</label>
+                                    <br />
+                                    <select asp-for="RgbPorts" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>توضیحات RGB : </label>
+                                    <input type="text" asp-for="RgbDescription" class="form-control" rows="3" placeholder="توضیحات RGB " />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> تعداد پورت Display :</label>
+                                <br />
+                                <select asp-for="DisplayPorts" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات پورت Display : </label>
+                                <input type="text" asp-for="DisplayDescription" class="form-control" rows="3" placeholder="توضیحات پورت Display " />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> SLI Support :</label>
+                                <br />
+                                <select asp-for="SliSupport" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات SLI : </label>
+                                <input type="text" asp-for="SliDescription" class="form-control" rows="3" placeholder="توضیحات SLI  " />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> CrossFire Support :</label>
+                                <br />
+                                <select asp-for="SliSupport" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات CrossFire : </label>
+                                <input type="text" asp-for="SliSupport" class="form-control" rows="3" placeholder="توضیحات CrossFire  " />
+                            </div>
+                            <hr style=" border-top: 1px solid green;" />
+                            <div class="form-group">
+                                <label class="text-danger"> PCIe5_0_16 Support :</label>
+                                <br />
+                                <select asp-for="PCIe5_0_16" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> PCIe5_0_16 تعداد :</label>
+                                <br />
+                                <select asp-for="PCIe5_0num" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> PCIe3_16 Support :</label>
+                                <br />
+                                <select asp-for="PCIe3_16" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> PCIe3_16 تعداد :</label>
+                                <br />
+                                <select asp-for="PCIe3_16_0num" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> PCIe3_4 Support :</label>
+                                <br />
+                                <select asp-for="PCIe3_4" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> PCIe3_4 تعداد :</label>
+                                <br />
+                                <select asp-for="PCIe3_4_0num" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> PCIe3_1 Support :</label>
+                                <br />
+                                <select asp-for="PCIe3_1" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> RearUsb3_2Gen2_2 تعداد :</label>
+                                <br />
+                                <select asp-for="RearUsb3_2Gen2_2" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> RearUsb3_2Gen تعداد :</label>
+                                <br />
+                                <select asp-for="RearUsb3_2Gen" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> RearUsb3_1Gen تعداد :</label>
+                                <br />
+                                <select asp-for="RearUsb3_1Gen" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+
+                                <label class="text-danger"> FrontUsb3_1Gen تعداد :</label>
+                                <br />
+                                <select asp-for="FrontUsb3_1Gen" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger"> FrontUsb3_2Gen تعداد :</label>
+                                <br />
+                                <select asp-for="FrontUsb3_2Gen" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">FrontUsb2Gen تعداد :</label>
+                                <br />
+                                <select asp-for="FrontUsb2Gen" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <hr style=" border-top: 1px solid black;" />
+
+                            <div class="form-group">
+                                <label class="text-danger">CpuFanHeaders تعداد :</label>
+                                <br />
+                                <select asp-for="CpuFanHeaders" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">CpuOPTFanHeaders تعداد :</label>
+                                <br />
+                                <select asp-for="CpuOPTFanHeaders" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">AIOFanHeaders تعداد :</label>
+                                <br />
+                                <select asp-for="AIOFanHeaders" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">ChassisFanHeader تعداد :</label>
+                                <br />
+                                <select asp-for="ChassisFanHeader" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">TwentyFourPinPowerConnector تعداد :</label>
+                                <br />
+                                <select asp-for="TwentyFourPinPowerConnector" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">Eight12VPinPowerConnector تعداد :</label>
+                                <br />
+                                <select asp-for="Eight12VPinPowerConnector" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="text-danger">پرت لن :</label>
+                                <br />
+                                <select asp-for="Four12VPinPowerConnector" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات پرت لن  : </label>
+                                <input type="text" asp-for="PortLanDescription" class="form-control" rows="3" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">Wireless:</label>
+                                <br />
+                                <select asp-for="Wireless" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات وای فا  : </label>
+                                <input type="text" asp-for="WifiDescription" class="form-control" rows="3" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">BlueTooth:</label>
+                                <br />
+                                <select asp-for="BlueTooth" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات بلوتوث  : </label>
+                                <input type="text" asp-for="BlueToothDescription" class="form-control" rows="3" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">M2Prot :</label>
+                                <br />
+                                <select asp-for="M2Prot" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">M2Prot تعداد :</label>
+                                <br />
+                                <select asp-for="M2Protnum" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">Sata6Gb:</label>
+                                <br />
+                                <select asp-for="Sata6Gb" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">تعداد پورت ساتا :</label>
+                                <br />
+                                <select asp-for="Sata" asp-items="@Html.GetEnumSelectList<Numbers>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">AuraRgbHeader :</label>
+                                <br />
+                                <select asp-for="AuraRgbHeader" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">ClearCmosBottom :</label>
+                                <br />
+                                <select asp-for="ClearCmosBottom" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات بایوس  : </label>
+                                <input type="text" asp-for="Bios" class="form-control" rows="3" />
+                            </div>
+                            <hr style="border-top: 1px solid red" />
+                            <div class="form-group">
+                                <label>توضیحات  M2  : </label>
+                                <input type="text" asp-for="M2Description" class="form-control" rows="3" />
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات M2_2 : </label>
+                                <input type="text" asp-for="M2_2Description" class="form-control" rows="3" />
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات M2_3  : </label>
+                                <input type="text" asp-for="M2_3Description" class="form-control" rows="3" />
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات M2_4  : </label>
+                                <input type="text" asp-for="M2_4Description" class="form-control" rows="3" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-danger">RAID :</label>
+                                <br />
+                                <select asp-for="RaidSupport" asp-items="@Html.GetEnumSelectList<DirectAnswer>()"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>توضیحات Raid : </label>
+                                <input type="text" asp-for="RaidDescription" class="form-control" rows="3" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" asp-for="AudioDescription" class="form-control" rows="3" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success" style="margin: 2%">ثبت</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="box box-danger col-md-5">
+                <div class="box-header col-md-5">
+                    <h4 class="box-title col-md-4" style="margin-bottom: 2%">تصویر شاخص محصول</h4>
+                    <br />
+                    <img id="ProductPic" src=~/AdminPanel/Product/ProductImg/@Model.ImagheName style="max-width:250px" />
+                    <label>لطفا فقط تصویر انتخاب کنید</label>
+                    <input type="file" asp-for="ProductImg" />
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="box box-danger col-md-5">
+                <div class="box-header col-md-5">
+                    <h4 class="box-title col-md-4" style="margin-bottom: 2%">ویدیو محصول</h4>
+                    <br />
+                    <img src=~/AdminPanel/Product/ProductImg/Product.jpg style="max-width=100px" />
+                    <label>لطفا فقط تصویر انتخاب کنید</label>
+                    <input asp-for="DemoFile" type="file" />
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </form>
+</div>
+@section ImageScripts
+{
+<script>
+
+        $("#Group").change(function() {
+            $("#SubGroup").empty();
+            $.getJSON("/home/GetSubGroupFromGroup/" + $("#Group :selected").val(),
+                function(data) {
+
+                    $.each(data,
+                        function() {
+                            $("#SubGroup").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+
+                });
+
+
+        });
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#ProductPic').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    //hint this Id belong to input bottom id
+    $("#ProductImg").change(function () {
+        readURL(this);
+    });
+</script>
+<script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+<script>
+           CKEDITOR.replace('LongDescription',{
+               customConfig: '/assets/js/vendor/Config.js'
+           }
+    );
+</script>
+
+}

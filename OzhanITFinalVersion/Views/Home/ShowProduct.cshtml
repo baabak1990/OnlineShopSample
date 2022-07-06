@@ -1,0 +1,24 @@
+﻿@using OzhanCoreLayer.ViewModels.BaseProducts
+@model IEnumerable<ShowProductInIndexViewModel>
+@{
+    ViewData["Title"] = "نمایش محصولات";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="main-row">
+    <div id="breadcrumb">
+        <i class="mdi mdi-home"></i>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">خانه</a></li>
+                <li class="breadcrumb-item active open" aria-current="page"><a asp-controller="Home" asp-action="ShowProduct">نمایش محصولات</a></li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- start sidebar--------------------->
+    <partial name="_ShowAllProducts"/>
+
+    </div>

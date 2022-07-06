@@ -1,0 +1,116 @@
+﻿@using OzhanDomainLayer.Entities.Accounts.User
+@model OzhanCoreLayer.ViewModels.AdminVm.EdidUserFromAdmin
+@{
+    ViewData["Title"] = "ویرایش کاربر" + " " + @Model.Username;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminPabnelLayout.cshtml";
+
+}
+
+<h2>@ViewData["Title"]</h2>
+<form method="post" asp-area="Admin" asp-controller="AdminHome" asp-action="EditUserFromAdmin" asp-antiforgery="true" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="box box-info">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="box-body">
+                                    <!-- Color Picker -->
+                                    <div class="form-group">
+                                        <input asp-for="Id" type="hidden" />
+                                        <input asp-for="UserImage" type="hidden" />
+                                        <label>نام کاربری</label>
+                                        <label type="text" asp-for="Username" class="text text-info">@Model.Username</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>ایمیل</label>
+                                        <input type="email" asp-for="Email" class="form-control my-colorpicker1 colorpicker-element">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>کلمه عبور</label><br />
+                                        <label class="text text-danger">در صورت ایجاد هر گونه تغییر در این فیلد کلمه عبور کاربر تغییر خواهد کرد !</label>
+                                        <input type="password" asp-for="Password" class="form-control my-colorpicker1 colorpicker-element">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success" style="margin: 2%">ثبت</button>
+                    <a asp-area="Admin" asp-controller="AdminHome" asp-action="ShowUsers" class="btn btn-danger" style="margin: 2%">بازگشت</a>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="box box-danger col-md-4">
+                            <div class="box-header col-md-4">
+                                <h4 class="box-title col-md-4" style="margin-bottom: 2%">تصویر کاربر</h4>
+                                <br />
+                                <div class="row">
+                                    <img id="userimage" src="~/UserPanel/assets/Pic/@Model.UserImage" class="thumbnail" style="max-width: 200px" />
+                                </div>
+                                <label>لطفا فقط تصویر انتخاب کنید</label>
+                                <input asp-for="UserAvatar" type="file" />
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="box box-success col-md-4">
+                            <div class="box-header col-md-4">
+                                <h4 class="box-title col-md-4" style="margin-bottom: 2%">نقش ها</h4>
+                                <br />
+                                <div class="box box">
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            @{
+                                                List<Role> roles = ViewData["roles"] as List<Role>;
+                                            }
+                                            @foreach (var item in roles)
+                                            {
+                                                <label>
+                                                    <input name="SelectedRole" type="checkbox" value="@item.Id" @((Model.SelectedRoles).Any(r => r == item.Id) ? "checked" : "")>
+                                                    <span class="text">@item.Title</span>
+                                                </label>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section ImageScripts
+{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#userimage').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        //hint this Id belong to input bottom id
+        $("#UserAvatar").change(function () {
+            readURL(this);
+        });
+    </script>
+}
+
+

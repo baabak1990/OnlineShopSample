@@ -1,0 +1,47 @@
+﻿<header class="main-header">
+    <!-- Logo -->
+    <a asp-area="Admin" asp-controller="AdminHome" asp-action="Index" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">پنل</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>کنترل پنل مدیریت</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+
+
+    </nav>
+</header>
+<!-- right side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">منو</li>
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>داشبرد</span>
+                    <span class="pull-left-container">
+                        <i class="fa fa-angle-right pull-left"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a asp-area="Admin" asp-controller="AdminHome" asp-action="Index"><i class="fa fa-circle-o"></i> خانه</a></li>
+                </ul>
+            </li>
+            <li class="active treeview">
+              <ul class="treeview-menu">
+                    <li class="active"><a asp-area="Admin" asp-controller="AdminHome" asp-action="ShowUsers"><i class="fa fa-child"></i> کاربران</a></li>
+                </ul>
+            </li>
+            <li><a asp-area="Admin" asp-controller="RoleAndPermissions" asp-action="Index"><i class="fa fa-circle-o text-yellow"></i> <span>مدیریت نقش ها</span></a></li>
+            <li><a asp-area="Products" asp-controller="ProductHome" asp-action="ShowLeaderBoards"><i class="fa fa-circle-o text-yellow"></i> <span>مدیریت سرگروه محصولات</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>اطلاعات</span></a></li>
+            <li><a asp-area="Accounts" asp-controller="Account" asp-action="Logout"><i class="fa fa-circle-o text-red"></i> <span>خروج</span></a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

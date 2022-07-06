@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <StartupObject>OzhanITFinalVersion.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\~\**" />
+    <Content Remove="wwwroot\~\**" />
+    <EmbeddedResource Remove="wwwroot\~\**" />
+    <None Remove="wwwroot\~\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OzhanCoreLayer\OzhanCoreLayer.csproj" />
+    <ProjectReference Include="..\OzhanIoCLayer\OzhanIoCLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\AdminPanel\Product\ProductVideo\" />
+    <Folder Include="wwwroot\AdminPanel\Product\ProductThumb\" />
+    <Folder Include="wwwroot\AdminPanel\Product\ProductImg\" />
+    <Folder Include="wwwroot\assets\images\Pic\" />
+    <Folder Include="wwwroot\MyImages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GoogleReCaptcha.V3" Version="1.3.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+</Project>

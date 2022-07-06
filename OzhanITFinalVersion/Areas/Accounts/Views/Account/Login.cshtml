@@ -1,0 +1,50 @@
+﻿@model OzhanCoreLayer.ViewModels.AccountVM.LoginVm.LoginVm
+@{
+    ViewData["Title"] = "ورود";
+    <partial name="_CaptchaScripts"/>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <section class="page-account-box">
+                <div class="col-lg-6 col-md-6 col-xs-12 mx-auto">
+                    <div class="ds-userlogin">
+                        <a href="#" class="account-box-logo">digismart</a>
+                        <div class="account-box">
+                            <div class="account-box-headline">
+                            </div>
+                            <div class="Login-to-account mt-4">
+                                <div class="account-box-content">
+                                    <h4>ورود اطلاعات کاربری</h4>
+                                    <form asp-area="Accounts" asp-controller="Account" asp-action="Login" method="post" asp-antiforgery="true" autocomplete="off">
+                                        <input type="hidden" asp-for="Capcha"/>
+                                        <div class="form-account-title">
+                                            <label asp-for="Email">ایمیل </label>
+                                            <input type="text" class="number-email-input" asp-for="Email">
+                                        </div>
+                                        <span asp-validation-for="Email" class="text text-danger"></span>
+                                        <div class="form-account-title">
+                                            <label asp-for="Password">رمز عبور</label>
+                                            <input type="password" class="password-input" asp-for="Password">
+                                        </div>
+                                        <span asp-validation-for="Password" class="text text-danger"></span>
+
+
+                                        <div class="form-row-account">
+                                            <button class="btn btn-primary btn-login">ورود </button>
+                                        </div>
+                                        <a asp-area="Accounts" asp-controller="Account" asp-action="ForgotPassword">فراموشی رمز عبور</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

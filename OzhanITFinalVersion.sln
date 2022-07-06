@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzhanITFinalVersion", "OzhanITFinalVersion\OzhanITFinalVersion.csproj", "{1021CA50-9973-481F-847F-F086FC5FAD07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OzhanIoC", "OzhanIoC", "{F3DE3D7E-5386-4867-A1E3-7ACA220EBCEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OzhanData", "OzhanData", "{0FDA0FEE-0F86-4C3E-B898-E783F3927115}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OzhanDomain", "OzhanDomain", "{EAC55F0E-65E9-481D-8879-4EB0F81236D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OzhanCore", "OzhanCore", "{2369AAA5-4C3A-45DC-A718-CCE707345BB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzhanCoreLayer", "OzhanCoreLayer\OzhanCoreLayer.csproj", "{1BA21560-AD29-49B7-A40A-152FE236ACD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzhanDataLayer", "OzhanDataLayer\OzhanDataLayer.csproj", "{00A8EBEF-525C-4149-9340-3927C41D4CE5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzhanDomainLayer", "OzhanDomainLayer\OzhanDomainLayer.csproj", "{6A1969FC-3FA8-4007-8FBA-A31FD8FCF447}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzhanIoCLayer", "OzhanIoCLayer\OzhanIoCLayer.csproj", "{0F4E5CC9-05E8-4D07-A3BA-1D30E3469702}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1021CA50-9973-481F-847F-F086FC5FAD07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1021CA50-9973-481F-847F-F086FC5FAD07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1021CA50-9973-481F-847F-F086FC5FAD07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1021CA50-9973-481F-847F-F086FC5FAD07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA21560-AD29-49B7-A40A-152FE236ACD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA21560-AD29-49B7-A40A-152FE236ACD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA21560-AD29-49B7-A40A-152FE236ACD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA21560-AD29-49B7-A40A-152FE236ACD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A8EBEF-525C-4149-9340-3927C41D4CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A8EBEF-525C-4149-9340-3927C41D4CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A8EBEF-525C-4149-9340-3927C41D4CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A8EBEF-525C-4149-9340-3927C41D4CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A1969FC-3FA8-4007-8FBA-A31FD8FCF447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A1969FC-3FA8-4007-8FBA-A31FD8FCF447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A1969FC-3FA8-4007-8FBA-A31FD8FCF447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A1969FC-3FA8-4007-8FBA-A31FD8FCF447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F4E5CC9-05E8-4D07-A3BA-1D30E3469702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4E5CC9-05E8-4D07-A3BA-1D30E3469702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4E5CC9-05E8-4D07-A3BA-1D30E3469702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4E5CC9-05E8-4D07-A3BA-1D30E3469702}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1BA21560-AD29-49B7-A40A-152FE236ACD1} = {2369AAA5-4C3A-45DC-A718-CCE707345BB3}
+		{00A8EBEF-525C-4149-9340-3927C41D4CE5} = {0FDA0FEE-0F86-4C3E-B898-E783F3927115}
+		{6A1969FC-3FA8-4007-8FBA-A31FD8FCF447} = {EAC55F0E-65E9-481D-8879-4EB0F81236D9}
+		{0F4E5CC9-05E8-4D07-A3BA-1D30E3469702} = {F3DE3D7E-5386-4867-A1E3-7ACA220EBCEC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28543CFE-2559-49A7-B8D0-AC223BD683D5}
+	EndGlobalSection
+EndGlobal

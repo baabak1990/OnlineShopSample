@@ -1,0 +1,17 @@
+﻿@using OzhanCoreLayer.Services.UserPanelServices
+@using OzhanCoreLayer.Utilities.Persian_Calender
+@inject IUserPanelServices _services
+@{
+    var vm = _services.showUserInfo(User.Identity.Name);
+}
+<footer class="profile-box-content-footer">
+    <span class="profile-box-nameuser">@vm.UserName</span>
+    <span class="profile-box-registery-date">عضویت در سایت :<br/>
+    @vm.CreateDate.ToShamci()
+        </span>
+   <div class="profile-box-tabs">
+        <a asp-area="Accounts" asp-controller="Account" asp-action="Logout" class="profile-box-tab-sign-out">
+            <i class="mdi mdi-logout-variant"></i>خروج از حساب
+        </a>
+    </div>
+</footer>

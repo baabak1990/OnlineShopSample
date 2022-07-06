@@ -1,0 +1,9 @@
+﻿@model OzhanCoreLayer.ViewModels.AccountVM.AccountActivationAndResetPassword.AccountActivationAndResetPasswordvm
+
+
+<div style="margin: 1%; padding: 1%">
+    <p style="color: darkgreen">@Model.UserName عزیز !</p>
+    <p>برای فعالسازی حساب خود میبایست بر روی لینک زیر کلیک نمایید !</p>
+    public IActionResult ActiveAccount(string code)
+    <a href="https://localhost:44305/athu/ActiveAccount/@Model.ActiveCode">فعالسازی حساب کاربری</a>
+</div>
